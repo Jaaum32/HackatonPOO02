@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="Model\Categoria.cs" />
+      <Compile Remove="UI\CategoriaUI.cs" />
+    </ItemGroup>
+
 </Project>
