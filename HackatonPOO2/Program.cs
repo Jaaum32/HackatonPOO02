@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using HackatonPOO2.Model;
 using HackatonPOO2.UI;
-
+//cmoit
 internal class Program
 {
     public static void Main(string[] args)
