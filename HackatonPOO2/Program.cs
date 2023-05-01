@@ -2,7 +2,7 @@
 using HackatonPOO2.Model;
 
 namespace HackatonPOO2;
-
+//
 internal abstract class Program
 {
     public static void Main(string[] args)
