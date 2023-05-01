@@ -1,8 +1,9 @@
-﻿using System.Data;
+﻿using HackatonPOO2.UI;
 using HackatonPOO2.Model;
-using HackatonPOO2.UI;
-//cmoit
-internal class Program
+
+namespace HackatonPOO2;
+
+internal abstract class Program
 {
     public static void Main(string[] args)
     {
@@ -70,7 +71,7 @@ internal class Program
                                     Console.WriteLine(caui.categoria[i].id + " - " + caui.categoria[i].Nome);
                                 }
 
-                                int idCategoria = 0;
+                                int idCategoria;
                                 while (true)
                                 {
                                     idCategoria = Convert.ToInt32(Console.ReadLine());
@@ -361,7 +362,7 @@ internal class Program
                                                       cui.clientes[i].Sobrenome);
                                 }
 
-                                int idCLiente = 0;
+                                int idCLiente;
                                 while (true)
                                 {
                                     idCLiente = Convert.ToInt32(Console.ReadLine());
@@ -397,7 +398,7 @@ internal class Program
 
                                     string? idp = Console.ReadLine();
 
-                                    if (idp.ToUpper() == "X")
+                                    if (idp?.ToUpper() == "X")
                                     {
                                         break;
                                     }

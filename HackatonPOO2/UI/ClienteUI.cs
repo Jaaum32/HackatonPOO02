@@ -1,6 +1,6 @@
 using HackatonPOO2.Model;
 
-namespace HackatonPOO.UI;
+namespace HackatonPOO2.UI;
 
 public class ClienteUI
 {
