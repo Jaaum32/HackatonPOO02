@@ -1,6 +1,6 @@
 namespace HackatonPOO2.Model;
 
-public class Bolsa
+public class Bolsa : Acessorio
 {
     
 }
