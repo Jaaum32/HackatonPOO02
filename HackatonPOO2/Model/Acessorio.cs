@@ -1,6 +1,6 @@
 namespace HackatonPOO2.Model;
 
-public class Acessorio : Produto
+public abstract class Acessorio : Produto
 {
    private string tamanho;
    private string cor;
