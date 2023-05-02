@@ -8,7 +8,6 @@ internal abstract class Program
     {
         Console.WriteLine("Loja de Roupa dos Gurizaum!");
         ClienteUI cui = new ClienteUI();
-        CategoriaUI caui = new CategoriaUI();
         VendaUI vui = new VendaUI();
         ProdutoUI pui = new ProdutoUI();
 
