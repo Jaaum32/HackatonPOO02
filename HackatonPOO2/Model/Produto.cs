@@ -6,9 +6,9 @@ public class Produto
     private string? nome;
     private string? desc;
     private double? preco;
-    private Categoria? categoria;
+    private CategoriaProduto? categoria;
 
-    public Produto(string? nome, String desc, double preco, Categoria categoria)
+    public Produto(string? nome, String desc, double preco, CategoriaProduto categoria)
     {
         this.nome = nome;
         this.desc = nome;
@@ -38,7 +38,7 @@ public class Produto
         set { this.preco = value; }
     }
 
-    public Categoria? Categoria
+    public CategoriaProduto? Categoria
     {
         get { return categoria; }
         set { this.categoria = value; }
