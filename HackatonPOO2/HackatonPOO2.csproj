@@ -10,6 +10,15 @@
     <ItemGroup>
       <Compile Remove="Model\Categoria.cs" />
       <Compile Remove="UI\CategoriaUI.cs" />
+      <Compile Remove="Services\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Services\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Services\**" />
     </ItemGroup>
 
 </Project>
