@@ -11,7 +11,7 @@ public class Produto
     public Produto(string? nome, String desc, double preco, CategoriaProduto categoria)
     {
         this.nome = nome;
-        this.desc = nome;
+        this.desc = desc;
         this.preco = preco;
         this.categoria = categoria;
     }
