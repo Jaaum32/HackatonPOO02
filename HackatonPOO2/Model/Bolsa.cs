@@ -18,4 +18,8 @@ public class Bolsa : Acessorio
         get { return volume; }
         set { this.volume = value; }
     }
+    public override string ToString()
+    {
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nVolume: " + volume;
+    }
 }
