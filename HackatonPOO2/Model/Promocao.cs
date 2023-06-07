@@ -4,7 +4,5 @@ public class Promocao
 {
     private String? tipo;
     private double? valor;
-
-    public string? Tipo { get => tipo; set => tipo = value; }
-    public double? Valor { get => valor; set => valor = value; }
+    private List<Produto> produtos = new List<Produto>();
 }

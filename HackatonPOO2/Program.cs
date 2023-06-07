@@ -21,8 +21,16 @@ internal abstract class Program
             switch (menu())
             {
              case 1: // *Adicionar produtos carrinho
+                 produto.getAll();
+                 Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
+                 int pos = Convert.ToInt32(Console.ReadLine());
+                 Console.WriteLine(produto.catalogo[pos]);
+                 carrinho.adicionarProdutoAoCarrinho(produto.catalogo[pos]);
                  break;
              case 2: // *Remover produtos do carrinho
+                 carrinho.getAll();
+                 Console.WriteLine("Digite o Id do produto que deseja remover do carrinho");
+                 carrinho.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
                  break;
              case 3: // *Ver descontos
                  break;

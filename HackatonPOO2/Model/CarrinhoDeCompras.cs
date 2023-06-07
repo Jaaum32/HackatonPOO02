@@ -22,11 +22,7 @@ public class CarrinhoDeCompras
         set { this.valorTotal = value; }
     }
 
-    public List<Produto>? Produtos
-    {
-        get { return produtos; }
-        set { this.produtos = value; }
-    }
+    public List<Produto> Produtos = new List<Produto>();
 
     public double? calcularValorTotal(List<Produto> produtos)
     {

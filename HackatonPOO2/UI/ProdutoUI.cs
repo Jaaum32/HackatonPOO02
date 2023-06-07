@@ -109,7 +109,7 @@ public class ProdutoUI
     {
         for (int i = 0; i < catalogo.Count; i++)
         {
-            Console.WriteLine(catalogo[i].ToString() + "\n");
+            Console.WriteLine("["+ i + "]\n" +catalogo[i]+ "\n");
         }
     }
     public bool containsId(int id)
