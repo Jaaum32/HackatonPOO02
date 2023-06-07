@@ -38,7 +38,7 @@ internal abstract class Program
              case 8: 
                  produto.createProduto();
                  break;
-             case 9: // *Editar produtos no catalogo
+             case 9: 
                  produto.updateProduto();
                  break;
              case 10: 
