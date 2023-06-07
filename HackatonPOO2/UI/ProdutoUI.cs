@@ -84,40 +84,19 @@ public class ProdutoUI
                 break;
         }
     }
-    public Produto getProduto(int id)
+    public void updateProduto()
     {
-        for (int i = 0; i < catalogo.Count; i++)
-        {
-            if (catalogo[i].id == id)
-            {
-                return catalogo[i];
-            }
-
-        }
-        return 
-            
-            
-            null;
-    }
-    public int getPosProduto(int id)
-    {
-        for (int i = 0; i < catalogo.Count; i++)
-        {
-            if (catalogo[i].id == id)
-            {
-                return i;
-            }
-
-        }
-        return -1;
-    }
-    public void updateProduto(int id, Produto produto)
-    {
-        catalogo[id] = produto;
+        getAll();
+        Console.WriteLine("Digite o id do produto que eseja alterar:");
+        int id = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine(catalogo[id].GetType());
         
     }
-    public void deleteProduto(int id)
+    public void deleteProduto()
     {
+        getAll();
+        Console.WriteLine("Digite o id do produto a ser apagado");
+        int id = Convert.ToInt32(Console.ReadLine());
         for (int i = 0; i < catalogo.Count; i++)
         {
             if (catalogo[i].id == id)
@@ -130,10 +109,9 @@ public class ProdutoUI
     {
         for (int i = 0; i < catalogo.Count; i++)
         {
-            Console.WriteLine(catalogo[i].ToString());
+            Console.WriteLine(catalogo[i].ToString() + "\n");
         }
     }
-
     public bool containsId(int id)
     {
         for (int i = 0; i < catalogo.Count; i++)

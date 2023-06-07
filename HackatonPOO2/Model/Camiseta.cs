@@ -34,4 +34,9 @@ public class Camiseta : Acessorio
         get { return gola; }
         set { this.gola = value; }
     }
+    
+    public override string ToString()
+    {
+        return "\nLargura: " + largura + "\nComprimento: " + comprimento + "\nGola: R$" + gola;
+    }
 }

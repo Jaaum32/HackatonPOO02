@@ -20,28 +20,31 @@ internal abstract class Program
         {
             switch (menu())
             {
-             case 1: // Adicionar produtos carrinho
+             case 1: // *Adicionar produtos carrinho
                  break;
-             case 2: // Remover produtos do carrinho
+             case 2: // *Remover produtos do carrinho
                  break;
-             case 3: // Ver descontos
+             case 3: // *Ver descontos
                  break;
-             case 4: // Aplicar descontos em produto
+             case 4: // *Aplicar descontos em produto
                  break;
-             case 5: // plicar descontos em categoria
+             case 5: // *Aplicar descontos em categoria
                  break;
-             case 6: // Remover descontos
+             case 6: // *Remover descontos
                  break;
-             case 7: // Ver catalogo
+             case 7: 
+                 produto.getAll();
                  break;
-             case 8: // Adicionar produtos no catalogo
+             case 8: 
                  produto.createProduto();
                  break;
-             case 9: // Editar produtos no catalogo
+             case 9: // *Editar produtos no catalogo
+                 produto.updateProduto();
                  break;
-             case 10: // Remover produtos do catalogo
+             case 10: 
+                 produto.deleteProduto();
                  break;
-             case 11: // Fechar compra
+             case 11: // *Fechar compra
                  break;
              case 0:
                  exec = false;
