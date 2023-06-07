@@ -26,5 +26,9 @@ public class Sapato : Acessorio
         get { return modelo; }
         set { this.modelo = value; }
     }
+    public override string ToString()
+    {
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nNumero: " + numero + "\nModelo: " + modelo;
+    }
     
 }

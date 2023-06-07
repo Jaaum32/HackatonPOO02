@@ -26,4 +26,9 @@ public class Calca : Acessorio
         get { return comprimento; }
         set { this.comprimento = value; }
     }
+    
+    public override string ToString()
+    {
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nLargura: " + largura + "\nComprimento: " + comprimento;
+    }
 }

@@ -37,6 +37,6 @@ public class Camiseta : Acessorio
     
     public override string ToString()
     {
-        return "\nLargura: " + largura + "\nComprimento: " + comprimento + "\nGola: R$" + gola;
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nLargura: " + largura + "\nComprimento: " + comprimento + "\nGola: " + gola;
     }
 }

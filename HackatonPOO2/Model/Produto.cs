@@ -2,7 +2,6 @@ namespace HackatonPOO2.Model;
 
 public class Produto
 {
-    public int id;
     private string? nome;
     private string? desc;
     private double? preco;
@@ -46,6 +45,6 @@ public class Produto
 
     public override string ToString()
     {
-        return "[" + id + "]\nNome: " + nome + "\nCategoria: [" + categoria + "]\nPreco: R$" + preco + "\nDesc: " + desc;
+        return "\nNome: " + nome + "\nCategoria: [" + categoria + "]\nPreco: R$" + preco + "\nDesc: " + desc;
     }
 }
