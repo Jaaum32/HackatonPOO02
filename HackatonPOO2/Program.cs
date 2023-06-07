@@ -8,11 +8,8 @@ internal abstract class Program
     {
         Console.WriteLine("Loja de Roupa dos Gurizaum!");
         CarrinhoUI carrinho = new CarrinhoUI();
-        ClienteUI cliente = new ClienteUI();
         ProdutoUI produto = new ProdutoUI();
         PromocaoUI promocao = new PromocaoUI();
-        VendaUI venda = new VendaUI();
-        
 
         bool exec = true;
 
@@ -20,14 +17,14 @@ internal abstract class Program
         {
             switch (menu())
             {
-             case 1: // *Adicionar produtos carrinho
+             case 1: 
                  produto.getAll();
                  Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
                  int pos = Convert.ToInt32(Console.ReadLine());
                  Console.WriteLine(produto.catalogo[pos]);
                  carrinho.adicionarProdutoAoCarrinho(produto.catalogo[pos]);
                  break;
-             case 2: // *Remover produtos do carrinho
+             case 2: 
                  carrinho.getAll();
                  Console.WriteLine("Digite o Id do produto que deseja remover do carrinho");
                  carrinho.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
@@ -35,11 +32,11 @@ internal abstract class Program
              case 3: // *Ver descontos
                  
                  break;
-             case 4: // *Aplicar descontos em produto
+             case 4: // *Aplicar promocao em produto
                  break;
-             case 5: // *Aplicar descontos em categoria
+             case 5: // *Aplicar promocao em categoria
                  break;
-             case 6: // *Remover descontos
+             case 6: // *Remover promocao
                  break;
              case 7: 
                  produto.getAll();
@@ -70,9 +67,9 @@ internal abstract class Program
         Console.WriteLine("2- Remover produtos do carrinho");
         
         Console.WriteLine("3- Ver descontos");
-        Console.WriteLine("4- Aplicar descontos em produto");
-        Console.WriteLine("5- Aplicar descontos em categoria");
-        Console.WriteLine("6- Remover descontos");
+        Console.WriteLine("4- Aplicar promocao em produto");
+        Console.WriteLine("5- Aplicar promocao em categoria");
+        Console.WriteLine("6- Remover promocao");
         
         Console.WriteLine("7- Ver catalogo");
         Console.WriteLine("8- Adicionar produtos no catalogo");

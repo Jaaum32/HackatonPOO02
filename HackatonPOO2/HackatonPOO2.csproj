@@ -11,6 +11,10 @@
       <Compile Remove="Model\Categoria.cs" />
       <Compile Remove="UI\CategoriaUI.cs" />
       <Compile Remove="Services\**" />
+      <Compile Remove="Model\Cliente.cs" />
+      <Compile Remove="UI\VendaUI.cs" />
+      <Compile Remove="UI\ClienteUI.cs" />
+      <Compile Remove="Model\Venda.cs" />
     </ItemGroup>
 
     <ItemGroup>
