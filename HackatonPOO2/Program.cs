@@ -33,6 +33,7 @@ internal abstract class Program
                  carrinho.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
                  break;
              case 3: // *Ver descontos
+                 
                  break;
              case 4: // *Aplicar descontos em produto
                  break;
