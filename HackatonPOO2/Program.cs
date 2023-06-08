@@ -18,7 +18,7 @@ internal abstract class Program
             switch (menu())
             {
              case 1: 
-                 produto.getAll();
+                 produto.getAll(produto.catalogo);
                  Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
                  int pos = Convert.ToInt32(Console.ReadLine());
                  Console.WriteLine(produto.catalogo[pos]);
@@ -29,28 +29,28 @@ internal abstract class Program
                  Console.WriteLine("Digite o Id do produto que deseja remover do carrinho");
                  carrinho.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
                  break;
-             case 3: // *Ver descontos
-                 
+             case 3: 
+                 promocao.getAll(promocao.promocoes);
                  break;
-             case 4: // *Aplicar promocao em produto
+             case 4: 
+                 promocao.createPromocao();
                  break;
-             case 5: // *Aplicar promocao em categoria
+             case 5: 
+                 promocao.deletePromocao();
                  break;
-             case 6: // *Remover promocao
+             case 6: 
+                 produto.getAll(produto.catalogo);
                  break;
              case 7: 
-                 produto.getAll();
-                 break;
-             case 8: 
                  produto.createProduto();
                  break;
-             case 9: 
+             case 8: 
                  produto.updateProduto();
                  break;
-             case 10: 
+             case 9: 
                  produto.deleteProduto();
                  break;
-             case 11: // *Fechar compra
+             case 10: // *Fechar compra
                  break;
              case 0:
                  exec = false;
@@ -67,16 +67,15 @@ internal abstract class Program
         Console.WriteLine("2- Remover produtos do carrinho");
         
         Console.WriteLine("3- Ver descontos");
-        Console.WriteLine("4- Aplicar promocao em produto");
-        Console.WriteLine("5- Aplicar promocao em categoria");
-        Console.WriteLine("6- Remover promocao");
+        Console.WriteLine("4- Aplicar promocao");
+        Console.WriteLine("5- Remover promocao");
         
-        Console.WriteLine("7- Ver catalogo");
-        Console.WriteLine("8- Adicionar produtos no catalogo");
-        Console.WriteLine("9- Editar produtos no catalogo");
-        Console.WriteLine("10- Remover produtos do catalogo");
+        Console.WriteLine("6- Ver catalogo");
+        Console.WriteLine("7- Adicionar produtos no catalogo");
+        Console.WriteLine("8- Editar produtos no catalogo");
+        Console.WriteLine("9- Remover produtos do catalogo");
         
-        Console.WriteLine("11 - Fechar compra");
+        Console.WriteLine("10 - Fechar compra");
         Console.WriteLine("0 - Sair");
         
         return Convert.ToInt32(Console.ReadLine());

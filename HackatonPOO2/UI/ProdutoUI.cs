@@ -87,7 +87,7 @@ public class ProdutoUI
 
     public void updateProduto()
     {
-        getAll();
+        getAll(catalogo);
         Console.WriteLine("Digite o id do produto que eseja alterar:");
         int id = Convert.ToInt32(Console.ReadLine());
         string cat = catalogo[id].GetType().Name;
@@ -157,19 +157,20 @@ public class ProdutoUI
 
     public void deleteProduto()
     {
-        getAll();
+        getAll(catalogo);
         Console.WriteLine("Digite o id do produto a ser apagado");
         int id = Convert.ToInt32(Console.ReadLine());
 
         catalogo.RemoveAt(id - 1);
-        getAll();
+        getAll(catalogo);
     }
 
-    public void getAll()
+    public void getAll(List<Produto> list)
     {
-        for (int i = 0; i < catalogo.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
-            Console.WriteLine("[" + (i + 1) + "]" + catalogo[i].ToString() + "\n");
+            Console.WriteLine("[" + (i + 1) + "]" + list[i] + "\n");
         }
     }
+    
 }
