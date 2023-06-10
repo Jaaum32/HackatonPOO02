@@ -5,10 +5,11 @@ namespace HackatonPOO2.UI;
 public class PromocaoUI
 {
     public List<Promocao> promocoes = new List<Promocao>();
-    ProdutoUI produto = new ProdutoUI();
+    ProdutoUI produtoUi = new ProdutoUI();
 
     public void createPromocao()
     {
+        Console.WriteLine("produtos:" + produtoUi.catalogo.Count);
         bool exec = true;
         CategoriaProduto categoria = new CategoriaProduto();
         Console.WriteLine("Qual será o nome da promoção?");
@@ -48,11 +49,18 @@ public class PromocaoUI
                         break;
                 }
 
-                promoCategorias.Add(categoria);
+                if (categoriaHavePromo(categoria) == null)
+                {
+                    promoCategorias.Add(categoria);
 
-                Console.WriteLine("Deseja adicionar outra categoria? (S/N)");
-                if (!Equals(Console.ReadLine(), "S"))
-                    exec = false;
+                    Console.WriteLine("Deseja adicionar outra categoria? (S/N)");
+                    if (!Equals(Console.ReadLine(), "S"))
+                        exec = false;
+                }
+                else
+                {
+                    Console.WriteLine("A categoria " + categoria + " ja está em promoção, escolha outra categoria!");
+                }
             }
 
             Promocao promo = new Promocao(nome, tipo, valor, null, promoCategorias);
@@ -60,34 +68,76 @@ public class PromocaoUI
         else
         {
             List<Produto> promoProdutos = new List<Produto>();
-            produto.getAll(produto.catalogo);
+            produtoUi.getAll();
             while (exec)
             {
                 Console.WriteLine("Digite o id do produto que deseja adicionar na promoção");
                 int id = Convert.ToInt32(Console.ReadLine());
-                promoProdutos.Add(produto.catalogo[id - 1]);
-                
-                Console.WriteLine("Deseja adicionar outro produto? (S/N)");
-                if (!Equals(Console.ReadLine(), "S"))
-                    exec = false;
+
+                Produto produto = produtoUi.catalogo[id - 1];
+
+                if (produtoHavePromo(produto) == null)
+                {
+                    promoProdutos.Add(produtoUi.catalogo[id - 1]);
+
+                    Console.WriteLine("Deseja adicionar outro produto? (S/N)");
+                    if (!Equals(Console.ReadLine(), "S"))
+                        exec = false;
+                }
+                else
+                {
+                    Console.WriteLine("O produto " + produto.Nome + " ja está em promoção, escolha outro produto!");
+                }
             }
-            
+
             Promocao promo = new Promocao(nome, tipo, valor, promoProdutos, null);
         }
     }
 
     public void deletePromocao()
     {
-        getAll(promocoes);
+        getAll();
         Console.WriteLine("Digite o id da promoção para excluir");
         promocoes.RemoveAt(Convert.ToInt32(Console.ReadLine()));
     }
 
-    public void getAll(List<Promocao> list)
+    public Promocao produtoHavePromo(Produto produto)
     {
-        for (int i = 0; i < list.Count; i++)
+        for (int i = 0; i < promocoes.Count; i++)
         {
-            Console.WriteLine("[" + (i + 1) + "]" +list[i] + "\n");
+            for (int j = 0; j < promocoes[i].Produtos.Count; j++)
+            {
+                if (promocoes[i].Produtos[j] == produto)
+                {
+                    return promocoes[i];
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public Promocao categoriaHavePromo(CategoriaProduto categoria)
+    {
+        for (int i = 0; i < promocoes.Count; i++)
+        {
+            for (int j = 0; j < promocoes[i].Categorias.Count; j++)
+            {
+                if (promocoes[i].Categorias[j] == categoria)
+                {
+                    return promocoes[i];
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public void getAll()
+    {
+        for (int i = 0; i < promocoes.Count; i++)
+        {
+            Console.WriteLine("[" + (i + 1) + "]" + promocoes[i] + "\n");
         }
     }
 }

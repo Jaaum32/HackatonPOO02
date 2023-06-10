@@ -18,7 +18,7 @@ internal abstract class Program
             switch (menu())
             {
              case 1: 
-                 produto.getAll(produto.catalogo);
+                 produto.getAll();
                  Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
                  int pos = Convert.ToInt32(Console.ReadLine());
                  Console.WriteLine(produto.catalogo[pos]);
@@ -30,7 +30,7 @@ internal abstract class Program
                  carrinho.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
                  break;
              case 3: 
-                 promocao.getAll(promocao.promocoes);
+                 promocao.getAll();
                  break;
              case 4: 
                  promocao.createPromocao();
@@ -39,7 +39,7 @@ internal abstract class Program
                  promocao.deletePromocao();
                  break;
              case 6: 
-                 produto.getAll(produto.catalogo);
+                 produto.getAll();
                  break;
              case 7: 
                  produto.createProduto();
@@ -67,7 +67,7 @@ internal abstract class Program
         Console.WriteLine("2- Remover produtos do carrinho");
         
         Console.WriteLine("3- Ver descontos");
-        Console.WriteLine("4- Aplicar promocao");
+        Console.WriteLine("4- Criar  promocao");
         Console.WriteLine("5- Remover promocao");
         
         Console.WriteLine("6- Ver catalogo");

@@ -42,6 +42,16 @@ public class Promocao
         get { return valor; }
         set { this.valor = value; }
     }
+    public List<Produto>? Produtos
+    {
+        get { return Produtos; }
+        set { this.Produtos = value; }
+    }
+    public List<CategoriaProduto>? Categorias
+    {
+        get { return Categorias; }
+        set { this.Categorias = value; }
+    }
     
     public override string ToString()
     {

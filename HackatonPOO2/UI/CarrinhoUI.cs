@@ -15,6 +15,7 @@ public class CarrinhoUI
         carrinhoDeCompras.Produtos.RemoveAt(id);
     }
     
+    
     public void getAll()
     {
         for (int i = 0; i < carrinhoDeCompras.Produtos.Count; i++)
