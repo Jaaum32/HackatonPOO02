@@ -7,9 +7,9 @@ internal abstract class Program
     public static void Main(string[] args)
     {
         Console.WriteLine("Loja de Roupa dos Gurizaum!");
-        CarrinhoUI carrinho = new CarrinhoUI();
-        ProdutoUI produto = new ProdutoUI();
-        PromocaoUI promocao = new PromocaoUI();
+        CarrinhoUI carrinhoUI = new CarrinhoUI();
+        ProdutoUI produtoUI = new ProdutoUI();
+        PromocaoUI promocaoUI = new PromocaoUI();
 
         bool exec = true;
 
@@ -18,37 +18,37 @@ internal abstract class Program
             switch (menu())
             {
              case 1: 
-                 produto.getAll();
+                 produtoUI.getAll();
                  Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
                  int pos = Convert.ToInt32(Console.ReadLine());
-                 Console.WriteLine(produto.catalogo[pos]);
-                 carrinho.adicionarProdutoAoCarrinho(produto.catalogo[pos]);
+                 Console.WriteLine(produtoUI.catalogo[pos]);
+                 carrinhoUI.adicionarProdutoAoCarrinho(produtoUI.catalogo[pos]);
                  break;
              case 2: 
-                 carrinho.getAll();
+                 carrinhoUI.getAll();
                  Console.WriteLine("Digite o Id do produto que deseja remover do carrinho");
-                 carrinho.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
+                 carrinhoUI.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
                  break;
              case 3: 
-                 promocao.getAll();
+                 promocaoUI.getAll();
                  break;
              case 4: 
-                 promocao.createPromocao();
+                 promocaoUI.createPromocao();
                  break;
              case 5: 
-                 promocao.deletePromocao();
+                 promocaoUI.deletePromocao();
                  break;
              case 6: 
-                 produto.getAll();
+                 produtoUI.getAll();
                  break;
              case 7: 
-                 produto.createProduto();
+                 produtoUI.createProduto();
                  break;
              case 8: 
-                 produto.updateProduto();
+                 produtoUI.updateProduto();
                  break;
              case 9: 
-                 produto.deleteProduto();
+                 produtoUI.deleteProduto();
                  break;
              case 10: // *Fechar compra
                  break;
