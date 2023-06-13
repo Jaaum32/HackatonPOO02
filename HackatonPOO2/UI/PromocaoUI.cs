@@ -63,7 +63,7 @@ public class PromocaoUI
                 }
             }
 
-            Promocao promo = new Promocao(idCount,nome, tipo, valor, null, promoCategorias);
+            Promocao promo = new Promocao(idCount, nome, tipo, valor, null, promoCategorias);
             promocoes.Add(promo);
         }
         else
@@ -91,7 +91,7 @@ public class PromocaoUI
                 }
             }
 
-            Promocao promo = new Promocao(idCount,nome, tipo, valor, promoProdutos, null);
+            Promocao promo = new Promocao(idCount, nome, tipo, valor, promoProdutos, null);
             promocoes.Add(promo);
         }
     }
@@ -107,7 +107,7 @@ public class PromocaoUI
     {
         foreach (var promocao in promocoes)
         {
-            if(promocao.Produtos != null)
+            if (promocao.Produtos != null)
                 if (promocao.Produtos.Contains(prod))
                     return promocao;
         }
@@ -119,7 +119,7 @@ public class PromocaoUI
     {
         foreach (var promocao in promocoes)
         {
-            if(promocao.Categorias != null)
+            if (promocao.Categorias != null)
                 if (promocao.Categorias.Contains(cat))
                     return promocao;
         }
@@ -131,7 +131,20 @@ public class PromocaoUI
     {
         for (int i = 0; i < promocoes.Count; i++)
         {
-            Console.WriteLine("[" + (i + 1) + "]____________________________\n" + promocoes[i] + "\n");
+            Console.WriteLine("[" + promocoes[i].Id + "]____________________________\n" + promocoes[i] + "\n");
         }
+    }
+
+    public Promocao getById(int id)
+    {
+        foreach (var promocao in promocoes)
+        {
+            if (promocao.Id == id)
+            {
+                return promocao;
+            }
+        }
+
+        return null;
     }
 }

@@ -20,40 +20,55 @@ internal abstract class Program
             switch (menu())
             {
                 case 1:
+                    Console.Clear();
                     carrinhoUI.adicionarProdutoAoCarrinho(produtoUI);
                     break;
                 case 2:
+                    Console.Clear();
                     carrinhoUI.getAll();
                     break;
                 case 3:
+                    Console.Clear();
                     carrinhoUI.removerProdutoAoCarrinho();
                     break;
                 case 4:
+                    Console.Clear();
                     promocaoUI.getAll();
                     break;
                 case 5:
+                    Console.Clear();
                     promocaoUI.createPromocao(produtoUI, idCountPromocao);
+                    idCountPromocao++;
                     break;
                 case 6:
+                    Console.Clear();
                     promocaoUI.deletePromocao();
                     break;
+                
                 case 7:
+                    Console.Clear();
                     produtoUI.getAll();
                     break;
                 case 8:
+                    Console.Clear();
                     produtoUI.createProduto(idCountProduto);
+                    idCountProduto++;
                     break;
                 case 9:
-                    produtoUI.updateProduto(idCountProduto);
+                    Console.Clear();
+                    produtoUI.updateProduto();
                     break;
                 case 10:
                     produtoUI.deleteProduto();
                     break;
                 case 11:
+                    Console.Clear();
                     double valorFinal = carrinhoUI.calcularValorTotal(produtoUI, promocaoUI);
-                    Console.WriteLine("Valor final: R$" + valorFinal);
+                    Console.WriteLine("Valor final: R$" + valorFinal + "\n");
                     break;
                 case 0:
+                    Console.Clear();
+                    Console.WriteLine("Adeus");
                     exec = false;
                     break;
             }
