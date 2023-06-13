@@ -6,7 +6,7 @@ public class PromocaoUI
 {
     public List<Promocao> promocoes = new List<Promocao>();
 
-    public void createPromocao(ProdutoUI produtoUi)
+    public void createPromocao(ProdutoUI produtoUi, int idCount)
     {
         Console.WriteLine("produtos:" + produtoUi.catalogo.Count);
 
@@ -63,7 +63,7 @@ public class PromocaoUI
                 }
             }
 
-            Promocao promo = new Promocao(nome, tipo, valor, null, promoCategorias);
+            Promocao promo = new Promocao(idCount,nome, tipo, valor, null, promoCategorias);
             promocoes.Add(promo);
         }
         else
@@ -91,7 +91,7 @@ public class PromocaoUI
                 }
             }
 
-            Promocao promo = new Promocao(nome, tipo, valor, promoProdutos, null);
+            Promocao promo = new Promocao(idCount,nome, tipo, valor, promoProdutos, null);
             promocoes.Add(promo);
         }
     }
@@ -131,7 +131,7 @@ public class PromocaoUI
     {
         for (int i = 0; i < promocoes.Count; i++)
         {
-            Console.WriteLine("[" + (i + 1) + "]" + promocoes[i] + "\n");
+            Console.WriteLine("[" + (i + 1) + "]____________________________\n" + promocoes[i] + "\n");
         }
     }
 }

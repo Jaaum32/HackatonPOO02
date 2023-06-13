@@ -21,17 +21,10 @@ public class CarrinhoDeCompras
         get { return valorTotal; }
         set { this.valorTotal = value; }
     }
-
-    public List<Produto> Produtos = new List<Produto>();
-
-    public double? calcularValorTotal(List<Produto> produtos)
+    public List<Produto>? Produtos
     {
-        double? valorTotal = 0;
-        for (int i = 0; i < produtos.Count; i++)
-        {
-            valorTotal += produtos[i].Preco;
-        }
-        return valorTotal;
+        get { return produtos; }
+        set { this.produtos = value; }
     }
-    
+
 }

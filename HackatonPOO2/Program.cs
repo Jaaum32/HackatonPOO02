@@ -1,6 +1,7 @@
 ﻿using HackatonPOO2.UI;
 
 namespace HackatonPOO2;
+
 internal abstract class Program
 {
     public static void Main(string[] args)
@@ -9,6 +10,8 @@ internal abstract class Program
         CarrinhoUI carrinhoUI = new CarrinhoUI();
         ProdutoUI produtoUI = new ProdutoUI();
         PromocaoUI promocaoUI = new PromocaoUI();
+        int idCountProduto = 1;
+        int idCountPromocao = 1;
 
         bool exec = true;
 
@@ -16,67 +19,66 @@ internal abstract class Program
         {
             switch (menu())
             {
-             case 1: 
-                 produtoUI.getAll();
-                 Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
-                 int pos = Convert.ToInt32(Console.ReadLine());
-                 Console.WriteLine(produtoUI.catalogo[pos]);
-                 carrinhoUI.adicionarProdutoAoCarrinho(produtoUI.catalogo[pos]);
-                 break;
-             case 2: 
-                 carrinhoUI.getAll();
-                 Console.WriteLine("Digite o Id do produto que deseja remover do carrinho");
-                 carrinhoUI.removerProdutoAoCarrinho(Convert.ToInt32(Console.ReadLine()));
-                 break;
-             case 3: 
-                 promocaoUI.getAll();
-                 break;
-             case 4: 
-                 promocaoUI.createPromocao(produtoUI);
-                 break;
-             case 5: 
-                 promocaoUI.deletePromocao();
-                 break;
-             case 6: 
-                 produtoUI.getAll();
-                 break;
-             case 7: 
-                 produtoUI.createProduto();
-                 break;
-             case 8: 
-                 produtoUI.updateProduto();
-                 break;
-             case 9: 
-                 produtoUI.deleteProduto();
-                 break;
-             case 10: // *Fechar compra
-                 break;
-             case 0:
-                 exec = false;
-                 break;
+                case 1:
+                    carrinhoUI.adicionarProdutoAoCarrinho(produtoUI);
+                    break;
+                case 2:
+                    carrinhoUI.getAll();
+                    break;
+                case 3:
+                    carrinhoUI.removerProdutoAoCarrinho();
+                    break;
+                case 4:
+                    promocaoUI.getAll();
+                    break;
+                case 5:
+                    promocaoUI.createPromocao(produtoUI, idCountPromocao);
+                    break;
+                case 6:
+                    promocaoUI.deletePromocao();
+                    break;
+                case 7:
+                    produtoUI.getAll();
+                    break;
+                case 8:
+                    produtoUI.createProduto(idCountProduto);
+                    break;
+                case 9:
+                    produtoUI.updateProduto(idCountProduto);
+                    break;
+                case 10:
+                    produtoUI.deleteProduto();
+                    break;
+                case 11:
+                    double valorFinal = carrinhoUI.calcularValorTotal(produtoUI, promocaoUI);
+                    Console.WriteLine("Valor final: R$" + valorFinal);
+                    break;
+                case 0:
+                    exec = false;
+                    break;
             }
         }
-
     }
 
     public static int menu()
     {
         Console.WriteLine("Digite a opcao desejada:");
         Console.WriteLine("1- Adicionar produtos no carrinho");
-        Console.WriteLine("2- Remover produtos do carrinho");
-        
-        Console.WriteLine("3- Ver descontos");
-        Console.WriteLine("4- Criar  promocao");
-        Console.WriteLine("5- Remover promocao");
-        
-        Console.WriteLine("6- Ver catalogo");
-        Console.WriteLine("7- Adicionar produtos no catalogo");
-        Console.WriteLine("8- Editar produtos no catalogo");
-        Console.WriteLine("9- Remover produtos do catalogo");
-        
-        Console.WriteLine("10 - Fechar compra");
+        Console.WriteLine("2- Ver Produtos no carrinho");
+        Console.WriteLine("3- Remover produtos do carrinho");
+
+        Console.WriteLine("4- Ver descontos");
+        Console.WriteLine("5- Criar  promocao");
+        Console.WriteLine("6- Remover promocao");
+
+        Console.WriteLine("7- Ver catalogo");
+        Console.WriteLine("8- Adicionar produtos no catalogo");
+        Console.WriteLine("9- Editar produtos no catalogo");
+        Console.WriteLine("10- Remover produtos do catalogo");
+
+        Console.WriteLine("11 - Fechar compra");
         Console.WriteLine("0 - Sair");
-        
+
         return Convert.ToInt32(Console.ReadLine());
     }
 }

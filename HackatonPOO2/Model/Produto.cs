@@ -2,13 +2,15 @@ namespace HackatonPOO2.Model;
 
 public class Produto
 {
+    private int id;
     private string? nome;
     private string? desc;
-    private double? preco;
-    private CategoriaProduto? categoria;
+    private double preco;
+    private CategoriaProduto categoria;
 
-    public Produto(string? nome, String desc, double preco, CategoriaProduto categoria)
+    public Produto(int id,string? nome, String desc, double preco, CategoriaProduto categoria)
     {
+        this.id = id;
         this.nome = nome;
         this.desc = desc;
         this.preco = preco;
@@ -17,6 +19,12 @@ public class Produto
 
     public Produto()
     {
+    }
+    
+    public int Id
+    {
+        get { return id; }
+        set { this.id = value; }
     }
 
     public string? Nome
@@ -31,13 +39,13 @@ public class Produto
         set { this.desc = value; }
     }
 
-    public double? Preco
+    public double Preco
     {
         get { return preco; }
         set { this.preco = value; }
     }
 
-    public CategoriaProduto? Categoria
+    public CategoriaProduto Categoria
     {
         get { return categoria; }
         set { this.categoria = value; }

@@ -6,7 +6,7 @@ public class ProdutoUI
 {
     public List<Produto> catalogo = new List<Produto>();
 
-    public void createProduto()
+    public void createProduto(int idCount)
     {
         double largura;
         double comprimento;
@@ -54,7 +54,7 @@ public class ProdutoUI
                 comprimento = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Gola:");
                 string gola = Console.ReadLine();
-                Camiseta newCamiseta = new Camiseta(nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento, gola);
+                Camiseta newCamiseta = new Camiseta(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento, gola);
                 catalogo.Add(newCamiseta);
                 break;
 
@@ -63,14 +63,14 @@ public class ProdutoUI
                 largura = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Comprimento:");
                 comprimento = Convert.ToDouble(Console.ReadLine());
-                Calca newCalca = new Calca(nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento);
+                Calca newCalca = new Calca(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento);
                 catalogo.Add(newCalca);
                 break;
 
             case CategoriaProduto.Bolsa:
                 Console.WriteLine("Volume:");
                 double volume = Convert.ToDouble(Console.ReadLine());
-                Bolsa newBolsa = new Bolsa(nome, desc, preco, categoria, tamanho, cor, marca, material, volume);
+                Bolsa newBolsa = new Bolsa(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, volume);
                 catalogo.Add(newBolsa);
                 break;
 
@@ -79,13 +79,13 @@ public class ProdutoUI
                 int numero = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Modelo:");
                 string modelo = Console.ReadLine();
-                Sapato newSapato = new Sapato(nome, desc, preco, categoria, tamanho, cor, marca, material, numero, modelo);
+                Sapato newSapato = new Sapato(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, numero, modelo);
                 catalogo.Add(newSapato);
                 break;
         }
     }
 
-    public void updateProduto()
+    public void updateProduto(int idCount)
     {
         getAll();
         Console.WriteLine("Digite o id do produto que eseja alterar:");
@@ -121,7 +121,7 @@ public class ProdutoUI
                 Console.WriteLine("Gola:");
                 string gola = Console.ReadLine();
                 categoria = CategoriaProduto.Camiseta;
-                Camiseta newCamiseta = new Camiseta(nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento, gola);
+                Camiseta newCamiseta = new Camiseta(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento, gola);
                 catalogo.Insert(id-1,newCamiseta);
                 break;
 
@@ -131,7 +131,7 @@ public class ProdutoUI
                 Console.WriteLine("Comprimento:");
                 comprimento = Convert.ToDouble(Console.ReadLine());
                 categoria = CategoriaProduto.Calca;
-                Calca newCalca = new Calca(nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento);
+                Calca newCalca = new Calca(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, largura, comprimento);
                 catalogo.Insert(id-1,newCalca);
                 break;
 
@@ -139,7 +139,7 @@ public class ProdutoUI
                 Console.WriteLine("Volume:");
                 double volume = Convert.ToDouble(Console.ReadLine());
                 categoria = CategoriaProduto.Bolsa;
-                Bolsa newBolsa = new Bolsa(nome, desc, preco, categoria, tamanho, cor, marca, material, volume);
+                Bolsa newBolsa = new Bolsa(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, volume);
                 catalogo.Insert(id-1,newBolsa);
                 break;
 
@@ -149,7 +149,7 @@ public class ProdutoUI
                 Console.WriteLine("Modelo:");
                 string modelo = Console.ReadLine();
                 categoria = CategoriaProduto.Sapato;
-                Sapato newSapato = new Sapato(nome, desc, preco, categoria, tamanho, cor, marca, material, numero, modelo);
+                Sapato newSapato = new Sapato(idCount,nome, desc, preco, categoria, tamanho, cor, marca, material, numero, modelo);
                 catalogo.Insert(id-1,newSapato);
                 break;
         }
@@ -170,7 +170,7 @@ public class ProdutoUI
         Console.WriteLine("Quantidade de itens no catálogo: " + catalogo.Count);
         for (int i = 0; i < catalogo.Count; i++)
         {
-            Console.WriteLine("[" + (i + 1) + "]" + catalogo[i] + "\n");
+            Console.WriteLine("[" + (catalogo[i].Id) + "]" + catalogo[i] + "\n");
         }
     }
     

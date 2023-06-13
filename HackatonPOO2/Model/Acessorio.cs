@@ -7,7 +7,7 @@ public abstract class Acessorio : Produto
    private string marca;
    private string material;
 
-   public Acessorio(string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material) : base(nome, desc, preco, categoria)
+   public Acessorio(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material) : base(id,nome, desc, preco, categoria)
    {
       this.tamanho = tamanho;
       this.cor = cor;

@@ -5,7 +5,7 @@ public class Sapato : Acessorio
     private int numero;
     private string modelo;
 
-    public Sapato(string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, int numero, string modelo) : base(nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Sapato(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, int numero, string modelo) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
     {
         this.numero = numero;
         this.modelo = modelo;

@@ -4,7 +4,7 @@ public class Bolsa : Acessorio
 {
     private double volume;
 
-    public Bolsa(string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double volume) : base(nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Bolsa(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double volume) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
     {
         this.volume = volume;
     }

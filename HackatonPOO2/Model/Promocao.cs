@@ -4,15 +4,17 @@ namespace HackatonPOO2.Model;
 
 public class Promocao
 {
+    private int id;
     private string? nome;
     private string tipo;
     private double valor;
     private List<Produto>? produtos;
     private List<CategoriaProduto>? categorias;
 
-    public Promocao(string? nome, string tipo, double valor, List<Produto>? produtos,
+    public Promocao(int id,string? nome, string tipo, double valor, List<Produto>? produtos,
         List<CategoriaProduto>? categorias)
     {
+        this.id = id;
         this.nome = nome;
         this.tipo = tipo;
         this.valor = valor;
@@ -24,6 +26,11 @@ public class Promocao
     {
     }
 
+    public int Id
+    {
+        get { return id; }
+        set { this.id = value; }
+    }
     public string Nome
     {
         get { return nome; }
@@ -56,7 +63,7 @@ public class Promocao
 
     public override string ToString()
     {
-        return "__________________________________" +
+        return 
                "\nNome: " + nome +
                "\nTipo: " + tipo +
                "\nValor: " + (tipo == "Fixo"

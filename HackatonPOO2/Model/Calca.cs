@@ -5,7 +5,7 @@ public class Calca : Acessorio
     private double largura;
     private double comprimento;
 
-    public Calca(string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double largura, double comprimento) : base(nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Calca(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double largura, double comprimento) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
     {
         this.largura = largura;
         this.comprimento = comprimento;

@@ -6,7 +6,7 @@ public class Camiseta : Acessorio
     private double comprimento;
     private string gola;
 
-    public Camiseta(string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double largura, double comprimento, string gola) : base(nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Camiseta(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double largura, double comprimento, string gola) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
     {
         this.largura = largura;
         this.comprimento = comprimento;
