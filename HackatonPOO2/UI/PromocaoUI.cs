@@ -5,11 +5,11 @@ namespace HackatonPOO2.UI;
 public class PromocaoUI
 {
     public List<Promocao> promocoes = new List<Promocao>();
-    ProdutoUI produtoUi = new ProdutoUI();
 
-    public void createPromocao()
+    public void createPromocao(ProdutoUI produtoUi)
     {
         Console.WriteLine("produtos:" + produtoUi.catalogo.Count);
+
         bool exec = true;
         CategoriaProduto categoria = new CategoriaProduto();
         Console.WriteLine("Qual será o nome da promoção?");
@@ -64,6 +64,7 @@ public class PromocaoUI
             }
 
             Promocao promo = new Promocao(nome, tipo, valor, null, promoCategorias);
+            promocoes.Add(promo);
         }
         else
         {
@@ -91,6 +92,7 @@ public class PromocaoUI
             }
 
             Promocao promo = new Promocao(nome, tipo, valor, promoProdutos, null);
+            promocoes.Add(promo);
         }
     }
 
@@ -101,33 +103,25 @@ public class PromocaoUI
         promocoes.RemoveAt(Convert.ToInt32(Console.ReadLine()));
     }
 
-    public Promocao produtoHavePromo(Produto produto)
+    public Promocao produtoHavePromo(Produto prod)
     {
-        for (int i = 0; i < promocoes.Count; i++)
+        foreach (var promocao in promocoes)
         {
-            for (int j = 0; j < promocoes[i].Produtos.Count; j++)
-            {
-                if (promocoes[i].Produtos[j] == produto)
-                {
-                    return promocoes[i];
-                }
-            }
+            if(promocao.Produtos != null)
+                if (promocao.Produtos.Contains(prod))
+                    return promocao;
         }
 
         return null;
     }
 
-    public Promocao categoriaHavePromo(CategoriaProduto categoria)
+    public Promocao categoriaHavePromo(CategoriaProduto cat)
     {
-        for (int i = 0; i < promocoes.Count; i++)
+        foreach (var promocao in promocoes)
         {
-            for (int j = 0; j < promocoes[i].Categorias.Count; j++)
-            {
-                if (promocoes[i].Categorias[j] == categoria)
-                {
-                    return promocoes[i];
-                }
-            }
+            if(promocao.Categorias != null)
+                if (promocao.Categorias.Contains(cat))
+                    return promocao;
         }
 
         return null;

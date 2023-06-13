@@ -1,5 +1,4 @@
 ﻿using HackatonPOO2.UI;
-using HackatonPOO2.Model;
 
 namespace HackatonPOO2;
 internal abstract class Program
@@ -33,7 +32,7 @@ internal abstract class Program
                  promocaoUI.getAll();
                  break;
              case 4: 
-                 promocaoUI.createPromocao();
+                 promocaoUI.createPromocao(produtoUI);
                  break;
              case 5: 
                  promocaoUI.deletePromocao();

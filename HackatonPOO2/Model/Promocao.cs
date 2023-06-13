@@ -4,7 +4,6 @@ namespace HackatonPOO2.Model;
 
 public class Promocao
 {
-    
     private string? nome;
     private string tipo;
     private double valor;
@@ -42,25 +41,41 @@ public class Promocao
         get { return valor; }
         set { this.valor = value; }
     }
+
     public List<Produto>? Produtos
     {
-        get { return Produtos; }
-        set { this.Produtos = value; }
+        get { return produtos; }
+        set { this.produtos = value; }
     }
+
     public List<CategoriaProduto>? Categorias
     {
-        get { return Categorias; }
-        set { this.Categorias = value; }
+        get { return categorias; }
+        set { this.categorias = value; }
     }
-    
+
     public override string ToString()
     {
-        return "\nNome: " + nome +
+        return "__________________________________" +
+               "\nNome: " + nome +
                "\nTipo: " + tipo +
-               "\nValor: " + (tipo=="Porcentagem"? ("R$ "+valor) : (valor+ "%"))+
-               "\n" + (produtos!=null ? produtos.ToString() : "") +
-               "\n" + (categorias!=null ? categorias.ToString() : "");
+               "\nValor: " + (tipo == "Fixo"
+                   ? ("R$ " + valor)
+                   : (valor + "%")) +
+               "\n" + (produtos != null
+                   ? "Produtos na promoção:\n" + listar(produtos)
+                   : "Categorias na promoção:\n" + listar(categorias));
     }
 
+    public string listar<T>(List<T> a)
+    {
+        string lista = "";
+        for (int i = 0; i < a.Count; i++)
+        {
+            lista += "  " + a[i] + "\n";
+        }
+        
 
+        return lista;
+    }
 }
