@@ -15,28 +15,38 @@ public class ProdutoUI
         Console.WriteLine("O produto será de qual categoria?");
         Console.WriteLine("1 - Camiseta | 2 - Calca | 3 - Bolsa | 4 - Sapato");
 
-        switch (Convert.ToInt32(Console.ReadLine()))
+        while (true)
         {
-            case 1:
-                categoria = CategoriaProduto.Camiseta;
-                break;
-            case 2:
-                categoria = CategoriaProduto.Calca;
-                break;
-            case 3:
-                categoria = CategoriaProduto.Bolsa;
-                break;
-            case 4:
-                categoria = CategoriaProduto.Sapato;
+            switch (readInt())
+            {
+                case 1:
+                    categoria = CategoriaProduto.Camiseta;
+                    break;
+                case 2:
+                    categoria = CategoriaProduto.Calca;
+                    break;
+                case 3:
+                    categoria = CategoriaProduto.Bolsa;
+                    break;
+                case 4:
+                    categoria = CategoriaProduto.Sapato;
+                    break;
+                default:
+                    Console.WriteLine("Digite um valor válido");
+                    break;
+            }
+
+            if (categoria != null)
                 break;
         }
+
 
         Console.WriteLine("Nome:");
         string nome = Console.ReadLine();
         Console.WriteLine("Desc:");
         string desc = Console.ReadLine();
         Console.WriteLine("Preco:");
-        double preco = Convert.ToDouble(Console.ReadLine());
+        double preco = readDouble();
         Console.WriteLine("Tamanho:");
         string tamanho = Console.ReadLine();
         Console.WriteLine("Cor:");
@@ -49,9 +59,9 @@ public class ProdutoUI
         {
             case CategoriaProduto.Camiseta:
                 Console.WriteLine("Largura:");
-                largura = Convert.ToDouble(Console.ReadLine());
+                largura = readDouble();
                 Console.WriteLine("Comprimento:");
-                comprimento = Convert.ToDouble(Console.ReadLine());
+                comprimento = readDouble();
                 Console.WriteLine("Gola:");
                 string gola = Console.ReadLine();
                 Camiseta newCamiseta = new Camiseta(idCount, nome, desc, preco, categoria, tamanho, cor, marca,
@@ -61,9 +71,9 @@ public class ProdutoUI
 
             case CategoriaProduto.Calca:
                 Console.WriteLine("Largura:");
-                largura = Convert.ToDouble(Console.ReadLine());
+                largura = readDouble();
                 Console.WriteLine("Comprimento:");
-                comprimento = Convert.ToDouble(Console.ReadLine());
+                comprimento = readDouble();
                 Calca newCalca = new Calca(idCount, nome, desc, preco, categoria, tamanho, cor, marca, material,
                     largura, comprimento);
                 catalogo.Add(newCalca);
@@ -71,7 +81,7 @@ public class ProdutoUI
 
             case CategoriaProduto.Bolsa:
                 Console.WriteLine("Volume:");
-                double volume = Convert.ToDouble(Console.ReadLine());
+                double volume = readDouble();
                 Bolsa newBolsa = new Bolsa(idCount, nome, desc, preco, categoria, tamanho, cor, marca, material,
                     volume);
                 catalogo.Add(newBolsa);
@@ -79,7 +89,7 @@ public class ProdutoUI
 
             case CategoriaProduto.Sapato:
                 Console.WriteLine("Numero:");
-                int numero = Convert.ToInt32(Console.ReadLine());
+                int numero = readInt();
                 Console.WriteLine("Modelo:");
                 string modelo = Console.ReadLine();
                 Sapato newSapato = new Sapato(idCount, nome, desc, preco, categoria, tamanho, cor, marca, material,
@@ -92,9 +102,21 @@ public class ProdutoUI
     public void updateProduto()
     {
         getAll();
-        Console.WriteLine("Digite o id do produto que eseja alterar:");
-        int id = Convert.ToInt32(Console.ReadLine());
-        CategoriaProduto categoria = getById(id).Categoria;
+        Console.WriteLine("Digite o id do produto que deseja alterar:");
+        CategoriaProduto categoria;
+        int id = readInt();
+        while (true)
+        {
+            Produto produto = getById(id);
+            if (produto == null)
+                Console.WriteLine("Nenhum produto com este ID! digite outro");
+            else
+            {
+                categoria = produto.Categoria;
+                break;
+            }
+        }
+
 
         double largura;
         double comprimento;
@@ -163,21 +185,21 @@ public class ProdutoUI
 
     public void deleteProduto()
     {
-        bool exec = true;
         getAll();
-        Console.WriteLine("Digite o id do produto a ser apagado");
-        while (exec)
+        Console.WriteLine("Digite o ID do produto que deseja remover do catálogo");
+        Produto produto = new Produto();
+        while (true)
         {
-            int id = Convert.ToInt32(Console.ReadLine());
-            Produto produto = getById(id);
+            produto = getById(readInt());
 
             if (produto == null)
-                Console.WriteLine("Nennhum produto com este ID no catalogo! digite outro");
+                Console.WriteLine("Nenhum produto com este ID! digite outro");
             else
-                catalogo.Remove(produto);
-
-            Console.WriteLine("Produto removido com sucesso!");
-            exec = false;
+            {
+                catalogo.Add(produto);
+                Console.WriteLine("Produto removido com sucesso!");
+                break;
+            }
         }
     }
 
@@ -201,5 +223,27 @@ public class ProdutoUI
         }
 
         return null;
+    }
+
+    public int readInt()
+    {
+        int x;
+        while (!int.TryParse(Console.ReadLine(), out x))
+        {
+            Console.WriteLine("Digite um valor válido!");
+        }
+
+        return x;
+    }
+
+    public double readDouble()
+    {
+        double x;
+        while (!double.TryParse(Console.ReadLine(), out x))
+        {
+            Console.WriteLine("Digite um valor válido!");
+        }
+
+        return x;
     }
 }

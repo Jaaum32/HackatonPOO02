@@ -21,7 +21,7 @@ internal abstract class Program
             {
                 case 1:
                     Console.Clear();
-                    carrinhoUI.adicionarProdutoAoCarrinho(produtoUI);
+                    carrinhoUI.adicionarProdutoDoCarrinho(produtoUI);
                     break;
                 case 2:
                     Console.Clear();
@@ -29,7 +29,7 @@ internal abstract class Program
                     break;
                 case 3:
                     Console.Clear();
-                    carrinhoUI.removerProdutoAoCarrinho();
+                    carrinhoUI.removerProdutoDoCarrinho();
                     break;
                 case 4:
                     Console.Clear();
@@ -44,7 +44,7 @@ internal abstract class Program
                     Console.Clear();
                     promocaoUI.deletePromocao();
                     break;
-                
+
                 case 7:
                     Console.Clear();
                     produtoUI.getAll();
@@ -93,7 +93,12 @@ internal abstract class Program
 
         Console.WriteLine("11 - Fechar compra");
         Console.WriteLine("0 - Sair");
+        int op;
+        while (!int.TryParse(Console.ReadKey().KeyChar.ToString(), out op) || op > 6)
+        {
+            Console.WriteLine("\nNão é uma opção! Digite novamente:");
+        }
 
-        return Convert.ToInt32(Console.ReadLine());
+        return op;
     }
 }

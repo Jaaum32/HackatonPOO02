@@ -25,4 +25,8 @@
       <None Remove="Services\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="ConsoleTable" Version="1.0.1.1" />
+    </ItemGroup>
+
 </Project>

@@ -15,37 +15,46 @@ public class PromocaoUI
         Console.WriteLine("Qual será o nome da promoção?");
         string nome = Console.ReadLine();
 
-        Console.WriteLine("Promoção será valor fixo ou porcentagem?\n1 - Fixo | 2 - Porcentagem");
+        Console.WriteLine("Promoção será valor fixo ou porcentagem? [ 1 - Fixo | 2 - Porcentagem ]");
         string tipo;
-        if (Convert.ToInt32(Console.ReadLine()) == 1)
+        if (readInt() == 1)
             tipo = "Fixo";
         else
             tipo = "Porcentagem";
 
         Console.WriteLine("Qual será o valor/quantidade de desconto?");
-        double valor = Convert.ToDouble(Console.ReadLine());
+        double valor = readDouble();
 
         Console.WriteLine("Promoção será de produto ou categoria?\n1 - Categoria | 2 - Produto");
-        if (Equals("1", Console.ReadLine()))
+        if (readInt() == 1)
         {
             List<CategoriaProduto> promoCategorias = new List<CategoriaProduto>();
             while (exec)
             {
                 Console.WriteLine("O produto será de qual categoria?");
                 Console.WriteLine("1 - Camiseta | 2 - Calca | 3 - Bolsa | 4 - Sapato");
-                switch (Convert.ToInt32(Console.ReadLine()))
+                while (true)
                 {
-                    case 1:
-                        categoria = CategoriaProduto.Camiseta;
-                        break;
-                    case 2:
-                        categoria = CategoriaProduto.Calca;
-                        break;
-                    case 3:
-                        categoria = CategoriaProduto.Bolsa;
-                        break;
-                    case 4:
-                        categoria = CategoriaProduto.Sapato;
+                    switch (readInt())
+                    {
+                        case 1:
+                            categoria = CategoriaProduto.Camiseta;
+                            break;
+                        case 2:
+                            categoria = CategoriaProduto.Calca;
+                            break;
+                        case 3:
+                            categoria = CategoriaProduto.Bolsa;
+                            break;
+                        case 4:
+                            categoria = CategoriaProduto.Sapato;
+                            break;
+                        default:
+                            Console.WriteLine("Digite um valor válido");
+                            break;
+                    }
+
+                    if (categoria != null)
                         break;
                 }
 
@@ -53,14 +62,12 @@ public class PromocaoUI
                 {
                     promoCategorias.Add(categoria);
 
-                    Console.WriteLine("Deseja adicionar outra categoria? (S/N)");
-                    if (!Equals(Console.ReadLine(), "S"))
+                    Console.WriteLine("Deseja adicionar outra categoria? [s/n]");
+                    if (!Equals(Console.ReadLine(), "s"))
                         exec = false;
                 }
                 else
-                {
                     Console.WriteLine("A categoria " + categoria + " ja está em promoção, escolha outra categoria!");
-                }
             }
 
             Promocao promo = new Promocao(idCount, nome, tipo, valor, null, promoCategorias);
@@ -73,22 +80,27 @@ public class PromocaoUI
             while (exec)
             {
                 Console.WriteLine("Digite o id do produto que deseja adicionar na promoção");
-                int id = Convert.ToInt32(Console.ReadLine());
-
-                Produto produto = produtoUi.catalogo[id - 1];
+                int id = readInt();
+                Produto produto = new Produto();
+                while (true)
+                {
+                    produto = produtoUi.getById(id);
+                    if (produto == null)
+                        Console.WriteLine("Nenhum produto com este ID! digite outro");
+                    else
+                        break;
+                }
 
                 if (produtoHavePromo(produto) == null)
                 {
                     promoProdutos.Add(produtoUi.catalogo[id - 1]);
 
-                    Console.WriteLine("Deseja adicionar outro produto? (S/N)");
-                    if (!Equals(Console.ReadLine(), "S"))
+                    Console.WriteLine("Deseja adicionar outro produto? [s/n]");
+                    if (!Equals(Console.ReadLine(), "s"))
                         exec = false;
                 }
                 else
-                {
                     Console.WriteLine("O produto " + produto.Nome + " ja está em promoção, escolha outro produto!");
-                }
             }
 
             Promocao promo = new Promocao(idCount, nome, tipo, valor, promoProdutos, null);
@@ -98,9 +110,20 @@ public class PromocaoUI
 
     public void deletePromocao()
     {
-        getAll();
-        Console.WriteLine("Digite o id da promoção para excluir");
-        promocoes.RemoveAt(Convert.ToInt32(Console.ReadLine()));
+        Promocao promocao = new Promocao();
+        while (true)
+        {
+            promocao = getById(readInt());
+
+            if (promocao == null)
+                Console.WriteLine("Nenhuma promoção com este ID! digite outro");
+            else
+            {
+                promocoes.Remove(promocao);
+                Console.WriteLine("Promocao removida com sucesso!");
+                break;
+            }
+        }
     }
 
     public Promocao produtoHavePromo(Produto prod)
@@ -146,5 +169,27 @@ public class PromocaoUI
         }
 
         return null;
+    }
+
+    public int readInt()
+    {
+        int x;
+        while (!int.TryParse(Console.ReadLine(), out x))
+        {
+            Console.WriteLine("Digite um valor válido!");
+        }
+
+        return x;
+    }
+
+    public double readDouble()
+    {
+        double x;
+        while (!double.TryParse(Console.ReadLine(), out x))
+        {
+            Console.WriteLine("Digite um valor válido!");
+        }
+
+        return x;
     }
 }

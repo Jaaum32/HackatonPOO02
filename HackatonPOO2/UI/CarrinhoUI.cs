@@ -5,45 +5,46 @@ namespace HackatonPOO2.UI;
 public class CarrinhoUI
 {
     public List<Produto> carrinho = new List<Produto>();
-    
 
-    public void adicionarProdutoAoCarrinho(ProdutoUI produtoUi)
+
+    public void adicionarProdutoDoCarrinho(ProdutoUI produtoUi)
     {
-        bool exec = true;
         produtoUi.getAll();
-        Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
-        while (exec)
+        Console.WriteLine("Digite o ID do produto que deseja adicionar ao carrinho");
+        Produto produto = new Produto();
+        while (true)
         {
-            int id = Convert.ToInt32(Console.ReadLine());
-            Produto produto = produtoUi.getById(id);
+            produto = produtoUi.getById(readInt());
 
             if (produto == null)
-                Console.WriteLine("Nennhum produto com este ID! digite outro");
+                Console.WriteLine("Nenhum produto com este ID! digite outro");
             else
+            {
                 carrinho.Add(produto);
-
-            Console.WriteLine("Produto adicionado com sucesso!");
-            exec = false;
+                Console.WriteLine("Produto adicionado com sucesso!");
+                break;
+            }
         }
     }
 
-    public void removerProdutoAoCarrinho()
+    public void removerProdutoDoCarrinho()
     {
-        bool exec = true;
+
         getAll();
-        Console.WriteLine("Digite o Id do produto que deseja adicionar ao carrinho");
-        while (exec)
+        Console.WriteLine("Digite o ID do produto que deseja remover do carrinho");
+        Produto produto = new Produto();
+        while (true)
         {
-            int id = Convert.ToInt32(Console.ReadLine());
-            Produto produto = getById(id);
+            produto = getById(readInt());
 
             if (produto == null)
-                Console.WriteLine("Nennhum produto com este ID no carrinho! digite outro");
+                Console.WriteLine("Nenhum produto com este ID! digite outro");
             else
-                carrinho.Remove(produto);
-
-            Console.WriteLine("Produto removido com sucesso!");
-            exec = false;
+            {
+                carrinho.Add(produto);
+                Console.WriteLine("Produto removido com sucesso!");
+                break;
+            }
         }
     }
 
@@ -79,9 +80,8 @@ public class CarrinhoUI
             }
         }
 
+        carrinho.Clear();
         return valorTotal;
-
-        return 0;
     }
 
     public Produto getById(int id)
@@ -96,4 +96,16 @@ public class CarrinhoUI
 
         return null;
     }
+
+    public int readInt()
+    {
+        int x;
+        while (!int.TryParse(Console.ReadLine(), out x))
+        {
+            Console.WriteLine("Digite um valor válido!");
+        }
+
+        return x;
+    }
+    
 }
