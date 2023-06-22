@@ -110,18 +110,23 @@ public class PromocaoUI
 
     public void deletePromocao()
     {
-        Promocao promocao = new Promocao();
-        while (true)
+        if (promocoes.Count == 0)
+            Console.WriteLine("Nenhuma promoção registrada!");
+        else
         {
-            promocao = getById(readInt());
-
-            if (promocao == null)
-                Console.WriteLine("Nenhuma promoção com este ID! digite outro");
-            else
+            Promocao promocao = new Promocao();
+            while (true)
             {
-                promocoes.Remove(promocao);
-                Console.WriteLine("Promocao removida com sucesso!");
-                break;
+                promocao = getById(readInt());
+
+                if (promocao == null)
+                    Console.WriteLine("Nenhuma promoção com este ID! digite outro");
+                else
+                {
+                    promocoes.Remove(promocao);
+                    Console.WriteLine("Promocao removida com sucesso!");
+                    break;
+                }
             }
         }
     }
@@ -152,9 +157,17 @@ public class PromocaoUI
 
     public void getAll()
     {
-        for (int i = 0; i < promocoes.Count; i++)
+        if (promocoes.Count == 0)
         {
-            Console.WriteLine("[" + promocoes[i].Id + "]____________________________\n" + promocoes[i] + "\n");
+            Console.WriteLine("Nenhuma promoção registrada!");
+        }
+        else
+        {
+            Console.WriteLine("\nPromções:");
+            for (int i = 0; i < promocoes.Count; i++)
+            {
+                Console.WriteLine("[" + promocoes[i].Id + "]____________________________\n" + promocoes[i] + "\n");
+            }
         }
     }
 

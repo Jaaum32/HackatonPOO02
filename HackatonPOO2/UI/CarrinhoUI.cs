@@ -6,82 +6,105 @@ public class CarrinhoUI
 {
     public List<Produto> carrinho = new List<Produto>();
 
-
-    public void adicionarProdutoDoCarrinho(ProdutoUI produtoUi)
+    public void adicionarProdutoNoCarrinho(ProdutoUI produtoUi)
     {
-        produtoUi.getAll();
-        Console.WriteLine("Digite o ID do produto que deseja adicionar ao carrinho");
-        Produto produto = new Produto();
-        while (true)
+        if (produtoUi.catalogo.Count == 0)
+            Console.WriteLine("Nenhum produto no catálogo!");
+        else
         {
-            produto = produtoUi.getById(readInt());
-
-            if (produto == null)
-                Console.WriteLine("Nenhum produto com este ID! digite outro");
-            else
+            produtoUi.getAll();
+            Console.WriteLine("Digite o ID do produto que deseja adicionar ao carrinho");
+            Produto produto = new Produto();
+            while (true)
             {
-                carrinho.Add(produto);
-                Console.WriteLine("Produto adicionado com sucesso!");
-                break;
+                produto = produtoUi.getById(readInt());
+
+                if (produto == null)
+                    Console.WriteLine("Nenhum produto com este ID! digite outro");
+                else
+                {
+                    carrinho.Add(produto);
+                    Console.WriteLine("Produto adicionado com sucesso!");
+                    break;
+                }
             }
         }
     }
 
-    public void removerProdutoDoCarrinho()
+    public void removerProdutoNoCarrinho()
     {
-
-        getAll();
-        Console.WriteLine("Digite o ID do produto que deseja remover do carrinho");
-        Produto produto = new Produto();
-        while (true)
+        if (carrinho.Count == 0)
+            Console.WriteLine("Nenhum produto no carrinho!");
+        else
         {
-            produto = getById(readInt());
-
-            if (produto == null)
-                Console.WriteLine("Nenhum produto com este ID! digite outro");
-            else
+            getAll();
+            Console.WriteLine("Digite o ID do produto que deseja remover do carrinho");
+            Produto produto = new Produto();
+            while (true)
             {
-                carrinho.Add(produto);
-                Console.WriteLine("Produto removido com sucesso!");
-                break;
+                produto = getById(readInt());
+
+                if (produto == null)
+                    Console.WriteLine("Nenhum produto com este ID! digite outro");
+                else
+                {
+                    carrinho.Add(produto);
+                    Console.WriteLine("Produto removido com sucesso!");
+                    break;
+                }
             }
         }
     }
 
     public void getAll()
     {
-        Console.WriteLine("\nProdutos no carrinho:");
-        for (int i = 0; i < carrinho.Count; i++)
+        if (carrinho.Count == 0)
         {
-            Console.WriteLine("[" + carrinho[i].Id + "]" + carrinho[i] + "\n");
+            Console.WriteLine("Nenhum produto no carrinho!");
+        }
+        else
+        {
+            Console.WriteLine("\nProdutos no carrinho:");
+            for (int i = 0; i < carrinho.Count; i++)
+            {
+                Console.WriteLine("[" + carrinho[i].Id + "]" + carrinho[i] + "\n");
+            }
         }
     }
 
     public double calcularValorTotal(ProdutoUI produtoUi, PromocaoUI promocaoUi)
     {
-        double desconto = 0;
-        double valorTotal = 0;
-        foreach (var produto in carrinho)
+        if (carrinho.Count == 0)
         {
-            Promocao? promocao = promocaoUi.produtoHavePromo(produto);
-            if (promocao == null)
-                promocao = promocaoUi.categoriaHavePromo(produto.Categoria);
-
-            if (promocao != null)
-            {
-                if (promocao.Tipo == "Fixo")
-                    valorTotal += produto.Preco - promocao.Valor;
-                else
-                    valorTotal += produto.Preco - (promocao.Valor / 100 * produto.Preco);
-            }
-            else
-            {
-                valorTotal += produto.Preco;
-            }
+            Console.WriteLine("Nenhuma produto no carrinho para fechar a compra!");
+            return 0;
         }
+        else
+        {
+            double desconto = 0;
+            double valorTotal = 0;
+            foreach (var produto in carrinho)
+            {
+                Promocao? promocao = promocaoUi.produtoHavePromo(produto);
+                if (promocao == null)
+                    promocao = promocaoUi.categoriaHavePromo(produto.Categoria);
 
-        carrinho.Clear();
-        return valorTotal;
+                if (promocao != null)
+                {
+                    if (promocao.Tipo == "Fixo")
+                        valorTotal += produto.Preco - promocao.Valor;
+                    else
+                        valorTotal += produto.Preco - (promocao.Valor / 100 * produto.Preco);
+                }
+                else
+                {
+                    valorTotal += produto.Preco;
+                }
+            }
+
+            carrinho.Clear();
+            return valorTotal;
+        }
     }
 
     public Produto getById(int id)
@@ -107,5 +130,4 @@ public class CarrinhoUI
 
         return x;
     }
-    
 }

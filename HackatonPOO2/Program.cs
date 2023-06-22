@@ -21,7 +21,7 @@ internal abstract class Program
             {
                 case 1:
                     Console.Clear();
-                    carrinhoUI.adicionarProdutoDoCarrinho(produtoUI);
+                    carrinhoUI.adicionarProdutoNoCarrinho(produtoUI);
                     break;
                 case 2:
                     Console.Clear();
@@ -29,7 +29,7 @@ internal abstract class Program
                     break;
                 case 3:
                     Console.Clear();
-                    carrinhoUI.removerProdutoDoCarrinho();
+                    carrinhoUI.removerProdutoNoCarrinho();
                     break;
                 case 4:
                     Console.Clear();
@@ -77,7 +77,7 @@ internal abstract class Program
 
     public static int menu()
     {
-        Console.WriteLine("Digite a opcao desejada:");
+        Console.WriteLine("\nDigite a opcao desejada:");
         Console.WriteLine("1- Adicionar produtos no carrinho");
         Console.WriteLine("2- Ver Produtos no carrinho");
         Console.WriteLine("3- Remover produtos do carrinho");
@@ -94,7 +94,7 @@ internal abstract class Program
         Console.WriteLine("11 - Fechar compra");
         Console.WriteLine("0 - Sair");
         int op;
-        while (!int.TryParse(Console.ReadKey().KeyChar.ToString(), out op) || op > 6)
+        while (!int.TryParse(Console.ReadKey().KeyChar.ToString(), out op) || op > 11)
         {
             Console.WriteLine("\nNão é uma opção! Digite novamente:");
         }

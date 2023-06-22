@@ -101,114 +101,132 @@ public class ProdutoUI
 
     public void updateProduto()
     {
-        getAll();
-        Console.WriteLine("Digite o id do produto que deseja alterar:");
-        CategoriaProduto categoria;
-        int id = readInt();
-        while (true)
+        if (catalogo.Count == 0)
+            Console.WriteLine("Nenhum produto no catálogo!");
+        else
         {
-            Produto produto = getById(id);
-            if (produto == null)
-                Console.WriteLine("Nenhum produto com este ID! digite outro");
-            else
+            getAll();
+            Console.WriteLine("Digite o id do produto que deseja alterar:");
+            CategoriaProduto categoria;
+            int id = readInt();
+            while (true)
             {
-                categoria = produto.Categoria;
-                break;
+                Produto produto = getById(id);
+                if (produto == null)
+                    Console.WriteLine("Nenhum produto com este ID! digite outro");
+                else
+                {
+                    categoria = produto.Categoria;
+                    break;
+                }
             }
-        }
 
 
-        double largura;
-        double comprimento;
+            double largura;
+            double comprimento;
 
-        Console.WriteLine("Novo nome:");
-        string nome = Console.ReadLine();
-        Console.WriteLine("Nova desc:");
-        string desc = Console.ReadLine();
-        Console.WriteLine("Novo preco:");
-        double preco = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("Novo tamanho:");
-        string tamanho = Console.ReadLine();
-        Console.WriteLine("Nova cor:");
-        string cor = Console.ReadLine();
-        Console.WriteLine("Nova marca:");
-        string marca = Console.ReadLine();
-        Console.WriteLine("Novo material:");
-        string material = Console.ReadLine();
+            Console.WriteLine("Novo nome:");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Nova desc:");
+            string desc = Console.ReadLine();
+            Console.WriteLine("Novo preco:");
+            double preco = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Novo tamanho:");
+            string tamanho = Console.ReadLine();
+            Console.WriteLine("Nova cor:");
+            string cor = Console.ReadLine();
+            Console.WriteLine("Nova marca:");
+            string marca = Console.ReadLine();
+            Console.WriteLine("Novo material:");
+            string material = Console.ReadLine();
 
-        switch (categoria)
-        {
-            case CategoriaProduto.Camiseta:
-                Console.WriteLine("Largura:");
-                largura = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Comprimento:");
-                comprimento = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Gola:");
-                string gola = Console.ReadLine();
+            switch (categoria)
+            {
+                case CategoriaProduto.Camiseta:
+                    Console.WriteLine("Largura:");
+                    largura = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Comprimento:");
+                    comprimento = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Gola:");
+                    string gola = Console.ReadLine();
 
-                Camiseta newCamiseta = new Camiseta(id, nome, desc, preco, categoria, tamanho, cor, marca, material,
-                    largura, comprimento, gola);
-                catalogo.Insert(id - 1, newCamiseta);
-                break;
+                    Camiseta newCamiseta = new Camiseta(id, nome, desc, preco, categoria, tamanho, cor, marca, material,
+                        largura, comprimento, gola);
+                    catalogo.Insert(id - 1, newCamiseta);
+                    break;
 
-            case CategoriaProduto.Calca:
-                Console.WriteLine("Largura:");
-                largura = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Comprimento:");
-                comprimento = Convert.ToDouble(Console.ReadLine());
+                case CategoriaProduto.Calca:
+                    Console.WriteLine("Largura:");
+                    largura = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Comprimento:");
+                    comprimento = Convert.ToDouble(Console.ReadLine());
 
-                Calca newCalca = new Calca(id, nome, desc, preco, categoria, tamanho, cor, marca, material, largura,
-                    comprimento);
-                catalogo.Insert(id - 1, newCalca);
-                break;
+                    Calca newCalca = new Calca(id, nome, desc, preco, categoria, tamanho, cor, marca, material, largura,
+                        comprimento);
+                    catalogo.Insert(id - 1, newCalca);
+                    break;
 
-            case CategoriaProduto.Bolsa:
-                Console.WriteLine("Volume:");
-                double volume = Convert.ToDouble(Console.ReadLine());
+                case CategoriaProduto.Bolsa:
+                    Console.WriteLine("Volume:");
+                    double volume = Convert.ToDouble(Console.ReadLine());
 
-                Bolsa newBolsa = new Bolsa(id, nome, desc, preco, categoria, tamanho, cor, marca, material, volume);
-                catalogo.Insert(id - 1, newBolsa);
-                break;
+                    Bolsa newBolsa = new Bolsa(id, nome, desc, preco, categoria, tamanho, cor, marca, material, volume);
+                    catalogo.Insert(id - 1, newBolsa);
+                    break;
 
-            case CategoriaProduto.Sapato:
-                Console.WriteLine("Numero:");
-                int numero = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Modelo:");
-                string modelo = Console.ReadLine();
+                case CategoriaProduto.Sapato:
+                    Console.WriteLine("Numero:");
+                    int numero = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Modelo:");
+                    string modelo = Console.ReadLine();
 
-                Sapato newSapato = new Sapato(id, nome, desc, preco, categoria, tamanho, cor, marca, material, numero,
-                    modelo);
-                catalogo.Insert(id - 1, newSapato);
-                break;
+                    Sapato newSapato = new Sapato(id, nome, desc, preco, categoria, tamanho, cor, marca, material,
+                        numero,
+                        modelo);
+                    catalogo.Insert(id - 1, newSapato);
+                    break;
+            }
         }
     }
 
     public void deleteProduto()
     {
-        getAll();
-        Console.WriteLine("Digite o ID do produto que deseja remover do catálogo");
-        Produto produto = new Produto();
-        while (true)
+        if (catalogo.Count == 0)
+            Console.WriteLine("Nenhum produto no catálogo!");
+        else
         {
-            produto = getById(readInt());
-
-            if (produto == null)
-                Console.WriteLine("Nenhum produto com este ID! digite outro");
-            else
+            getAll();
+            Console.WriteLine("Digite o ID do produto que deseja remover do catálogo");
+            Produto produto = new Produto();
+            while (true)
             {
-                catalogo.Add(produto);
-                Console.WriteLine("Produto removido com sucesso!");
-                break;
+                produto = getById(readInt());
+
+                if (produto == null)
+                    Console.WriteLine("Nenhum produto com este ID! digite outro");
+                else
+                {
+                    catalogo.Add(produto);
+                    Console.WriteLine("Produto removido com sucesso!");
+                    break;
+                }
             }
         }
     }
 
     public void getAll()
     {
-        Console.WriteLine("Quantidade de itens no catálogo: " + catalogo.Count);
-        for (int i = 0; i < catalogo.Count; i++)
+        if (catalogo.Count == 0)
         {
-            Console.WriteLine("[" + catalogo[i].Id + "]" + catalogo[i] + "\n");
+            Console.WriteLine("Nenhuma produto no catálogo!");
+        }
+        else
+        {
+            Console.WriteLine("Quantidade de itens no catálogo: " + catalogo.Count);
+            for (int i = 0; i < catalogo.Count; i++)
+            {
+                Console.WriteLine("[" + catalogo[i].Id + "]" + catalogo[i] + "\n");
+            }
         }
     }
 
