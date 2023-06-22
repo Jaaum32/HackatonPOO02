@@ -5,7 +5,7 @@ public class Sapato : Acessorio
     private int numero;
     private string modelo;
 
-    public Sapato(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, int numero, string modelo) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Sapato(int id,string? nome, string descricao, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, int numero, string modelo) : base(id,nome, descricao, preco, categoria, tamanho, cor, marca, material)
     {
         this.numero = numero;
         this.modelo = modelo;
@@ -28,7 +28,7 @@ public class Sapato : Acessorio
     }
     public override string ToString()
     {
-        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nNumero: " + numero + "\nModelo: " + modelo;
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Descricao + " \nNumero: " + numero + "\nModelo: " + modelo;
     }
     
 }
