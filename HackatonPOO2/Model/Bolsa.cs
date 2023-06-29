@@ -4,7 +4,7 @@ public class Bolsa : Acessorio
 {
     private double volume;
 
-    public Bolsa(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double volume) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Bolsa(int id,string? nome, string descricao, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double volume) : base(id,nome, descricao, preco, categoria, tamanho, cor, marca, material)
     {
         this.volume = volume;
     }
@@ -20,6 +20,6 @@ public class Bolsa : Acessorio
     }
     public override string ToString()
     {
-        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nVolume: " + volume;
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Descricao + " \nVolume: " + volume;
     }
 }

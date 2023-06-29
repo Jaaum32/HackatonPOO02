@@ -4,15 +4,15 @@ public class Produto
 {
     private int id;
     private string? nome;
-    private string? desc;
+    private string? descricao;
     private double preco;
     private CategoriaProduto categoria;
 
-    public Produto(int id,string? nome, String desc, double preco, CategoriaProduto categoria)
+    public Produto(int id,string? nome, String descricao, double preco, CategoriaProduto categoria)
     {
         this.id = id;
         this.nome = nome;
-        this.desc = desc;
+        this.descricao = descricao;
         this.preco = preco;
         this.categoria = categoria;
     }
@@ -33,10 +33,10 @@ public class Produto
         set { this.nome = value; }
     }
 
-    public string? Desc
+    public string? Descricao
     {
-        get { return desc; }
-        set { this.desc = value; }
+        get { return descricao; }
+        set { this.descricao = value; }
     }
 
     public double Preco
@@ -53,6 +53,6 @@ public class Produto
 
     public override string ToString()
     {
-        return "\nNome: " + nome + "\nCategoria: [" + categoria + "]\nPreco: R$" + preco + "\nDesc: " + desc;
+        return "\nNome: " + nome + "\nCategoria: [" + categoria + "]\nPreco: R$" + preco + "\nDesc: " + descricao;
     }
 }

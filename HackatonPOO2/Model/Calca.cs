@@ -5,7 +5,7 @@ public class Calca : Acessorio
     private double largura;
     private double comprimento;
 
-    public Calca(int id,string? nome, string desc, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double largura, double comprimento) : base(id,nome, desc, preco, categoria, tamanho, cor, marca, material)
+    public Calca(int id,string? nome, string descricao, double preco, CategoriaProduto categoria, string tamanho, string cor, string marca, string material, double largura, double comprimento) : base(id,nome, descricao, preco, categoria, tamanho, cor, marca, material)
     {
         this.largura = largura;
         this.comprimento = comprimento;
@@ -29,6 +29,6 @@ public class Calca : Acessorio
     
     public override string ToString()
     {
-        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Desc + " \nLargura: " + largura + "\nComprimento: " + comprimento;
+        return "\nNome: " + Nome + "\nCategoria: [" + Categoria + "]\nPreco: R$" + Preco + "\nDesc: " + Descricao + " \nLargura: " + largura + "\nComprimento: " + comprimento;
     }
 }
