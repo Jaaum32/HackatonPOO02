@@ -117,6 +117,7 @@ public class PromocaoUI
             Promocao promocao = new Promocao();
             while (true)
             {
+                
                 try
                 {
                     promocao = getById(readInt());
