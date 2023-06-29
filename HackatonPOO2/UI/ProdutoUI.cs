@@ -111,13 +111,20 @@ public class ProdutoUI
             int id = readInt();
             while (true)
             {
-                Produto produto = getById(id);
-                if (produto == null)
-                    Console.WriteLine("Nenhum produto com este ID! digite outro");
-                else
+                try
                 {
-                    categoria = produto.Categoria;
-                    break;
+                    Produto produto = getById(id);
+                    if (produto == null)
+                        Console.WriteLine("Nenhum produto com este ID! digite outro");
+                    else
+                    {
+                        categoria = produto.Categoria;
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ocorreu um erro: " + ex.Message);
                 }
             }
 
@@ -200,15 +207,21 @@ public class ProdutoUI
             Produto produto = new Produto();
             while (true)
             {
-                produto = getById(readInt());
-
-                if (produto == null)
-                    Console.WriteLine("Nenhum produto com este ID! digite outro");
-                else
+                try
                 {
-                    catalogo.Add(produto);
-                    Console.WriteLine("Produto removido com sucesso!");
-                    break;
+                    produto = getById(readInt());
+                    if (produto == null)
+                        Console.WriteLine("Nenhum produto com este ID! digite outro");
+                    else
+                    {
+                        catalogo.Remove(produto);
+                        Console.WriteLine("Produto removido com sucesso!");
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ocorreu um erro: " + ex.Message);
                 }
             }
         }

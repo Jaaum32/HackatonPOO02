@@ -17,15 +17,22 @@ public class CarrinhoUI
             Produto produto = new Produto();
             while (true)
             {
-                produto = produtoUi.getById(readInt());
-
-                if (produto == null)
-                    Console.WriteLine("Nenhum produto com este ID! digite outro");
-                else
+                try
                 {
-                    carrinho.Add(produto);
-                    Console.WriteLine("Produto adicionado com sucesso!");
-                    break;
+                    produto = produtoUi.getById(readInt());
+
+                    if (produto == null)
+                        Console.WriteLine("Nenhum produto com este ID! digite outro");
+                    else
+                    {
+                        carrinho.Add(produto);
+                        Console.WriteLine("Produto adicionado com sucesso!");
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ocorreu um erro: " + ex.Message);
                 }
             }
         }
@@ -42,15 +49,21 @@ public class CarrinhoUI
             Produto produto = new Produto();
             while (true)
             {
-                produto = getById(readInt());
-
-                if (produto == null)
-                    Console.WriteLine("Nenhum produto com este ID! digite outro");
-                else
+                try
                 {
-                    carrinho.Add(produto);
-                    Console.WriteLine("Produto removido com sucesso!");
-                    break;
+                    produto = getById(readInt());
+                    if (produto == null)
+                        Console.WriteLine("Nenhum produto com este ID! digite outro");
+                    else
+                    {
+                        carrinho.Add(produto);
+                        Console.WriteLine("Produto removido com sucesso!");
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ocorreu um erro: " + ex.Message);
                 }
             }
         }

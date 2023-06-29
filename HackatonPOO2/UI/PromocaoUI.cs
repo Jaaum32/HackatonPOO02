@@ -117,15 +117,22 @@ public class PromocaoUI
             Promocao promocao = new Promocao();
             while (true)
             {
-                promocao = getById(readInt());
-
-                if (promocao == null)
-                    Console.WriteLine("Nenhuma promoção com este ID! digite outro");
-                else
+                try
                 {
-                    promocoes.Remove(promocao);
-                    Console.WriteLine("Promocao removida com sucesso!");
-                    break;
+                    promocao = getById(readInt());
+
+                    if (promocao == null)
+                        Console.WriteLine("Nenhuma promoção com este ID! digite outro");
+                    else
+                    {
+                        promocoes.Remove(promocao);
+                        Console.WriteLine("Promocao removida com sucesso!");
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ocorreu um erro: " + ex.Message);
                 }
             }
         }
